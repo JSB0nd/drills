@@ -1,0 +1,45 @@
+.counter-container {
+    display: flex;
+}
+.products-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+.products-button {
+    max-width: 150px;
+}
+.counter {
+    max-width: 30px;
+    text-align: center;
+}
+.product-card-container {
+    margin-bottom: 40px;
+}
+.product-card-container h3 {
+    background-color: aliceblue;
+}
+.card-attribute-container {
+    margin-bottom: 8px;
+}
+.card-attribute-name {
+    font-weight: 600;
+}
+.card-attribute-value {
+    margin-left: 10px; 
+    margin-right: 20px;
+}
+.hidden {
+    display: none;
+}
+.tabs {
+    margin-bottom: 30px;
+}
+.tab {
+    cursor: pointer;
+    text-decoration: underline;
+    color: cornflowerblue;
+    padding: 10px;
+    border: 1px solid cornflowerblue;
+    max-width: 400px;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "25.5",
+  "version": "1.0.0",
+  "description": "Демонстрация работы библиотеки @reduxjs/toolkit; Книга Современная фронтенд-разработка изд-во Питер https://piter.com; https://designfrontend.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "concurrently \"webpack -w\" \"node server/index\""
+  },
+  "author": "Kuzmin Anton",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.23.5",
+    "babel-loader": "^9.1.3",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.3"
+  }
+}
