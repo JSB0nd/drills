@@ -15,7 +15,7 @@ export const AdvancedItem = (item) => {
 
         default: {
 
-            return <div>HHHHHHHHH</div>;
+            return <div />;
         }
 
         case "text": {
