@@ -1,0 +1,65 @@
+{
+  "title": "Стадии прохождения события",
+  "goals": [
+    "Изучение фаз распространения событий в DOM.",
+    "Освоение методов stopPropagation() и preventDefault()."
+  ],
+  "training_topic": "Механизм распространения событий в DOM, предотвращение распространения и отмена стандартного поведения.",
+  "required_resources": [
+    "Любой современный браузер (Google Chrome, Mozilla Firefox, Safari и т.д.).",
+    "HTML-файл `index.html`, (предоставляется в дополнительных материалах)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Изучение механизма распространения событий в DOM, прохождение события от целевого элемента вверх по цепочке предков (bubbling phase).",
+    "",
+    "Шаг 1. Подготовьте рабочую среду:",
+    "- Откройте файл `index.html`, расположенный в папке упражнения, в браузере.",
+    "",
+    "Шаг 2. Начало работы с событием click:",
+    "- Откройте инструменты разработчика (F12 или Ctrl+Shift+I) и перейдите на вкладку «Консоль».",
+    "",
+    "Шаг 3. Назначение обработчиков событий на элементы:",
+    "- Введите в консоли следующий фрагмент кода и нажмите Enter:",
+    {
+      "type": "code",
+      "title": "Назначение обработчиков событий на разные элементы",
+      "code": "const parent = document.querySelector('.parent'); const firstChild = document.querySelector('.first_child'); const secondChild = document.querySelector('.second_child'); const target = document.querySelector('.target'); function handleClick(event) { event.stopPropagation(); alert(`Щёлкнули по элементу: ${event.currentTarget.className}`); } parent.addEventListener('click', handleClick); firstChild.addEventListener('click', handleClick); secondChild.addEventListener('click', handleClick); target.addEventListener('click', handleClick);"
+    },
+    "",
+    "- Щёлкните мышью по элементу «Целевой объект» и проследите последовательность срабатывания обработчиков событий.",
+    "",
+    "Шаг 4. Демонстрация метода stopPropagation():",
+    "- Аналогичным образом добавьте событие и обработчики, но оставьте первый обработчик без остановки распространения события, чтобы увидеть полную картину распространения:",
+    {
+      "type": "code",
+      "title": "Демонстрация фазы bubbling",
+      "code": "const parent = document.querySelector('.parent'); const firstChild = document.querySelector('.first_child'); const secondChild = document.querySelector('.second_child'); const target = document.querySelector('.target'); function handleClick(event) { alert(`Щёлкнули по элементу: ${event.currentTarget.className}`); } parent.addEventListener('click', handleClick); firstChild.addEventListener('click', handleClick); secondChild.addEventListener('click', handleClick); target.addEventListener('click', handleClick);"
+    },
+    "",
+    "- Щёлкните снова по элементу «Целевой объект» и проследите полную цепочку обработчиков событий.",
+    "",
+    "Заключение:",
+    "- Вы освоили механизм распространения событий в DOM, научились контролировать распространение событий и предотвращать стандартные реакции браузера."
+  ],
+  "reflection_questions": [
+    "Какова разница между bubble phase и capture phase в событиях DOM?",
+    "Как работает метод stopPropagation() и в каких случаях его целесообразно использовать?",
+    "Какие события в DOM можно отменить с помощью preventDefault()?"
+  ],
+  "additional_materials": [
+    {
+    "type": "link",
+    "title": "HTML-файл для выполнения упражнения",
+    "name": "1",
+    "folder": "2",
+    "chapter": "2.6"
+    }, 
+    "Документация MDN по событиям DOM: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events",
+    "Документация MDN по методу stopPropagation(): https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation",
+    "Документация MDN по методу preventDefault(): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault"
+  ],
+  "final_conclusion": [
+    "Вы освоили механизм обработки событий в DOM, научились использовать методы stopPropagation() и preventDefault(), что позволит эффективнее управлять поведением страниц и улучшит контроль над действиями пользователей."
+  ]
+}

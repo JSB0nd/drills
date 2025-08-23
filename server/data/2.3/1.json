@@ -1,0 +1,91 @@
+{
+  "title": "Распознавание встроенных классов в JavaScript и платформ",
+  "goals": [
+    "Различие между классами JavaScript, используемыми в браузерах и в Node.js.",
+    "Практика создания объектов с использованием классов в разных средах.",
+    "Понимание особенностей поведения классов в различных контекстах."
+  ],
+  "training_topic": "Применение встроенных классов JavaScript в браузере и Node.js, различие контекста исполнения.",
+  "required_resources": [
+    "Node.js версии 14+ (установлен в ОС).",
+    "Браузер (Google Chrome, Yandex Browser и аналогичные)."
+  ],
+  "instructions": [
+    "Создание объектов с использованием стандартных классов JavaScript:",
+    "- Откройте консоль разработчика в своём браузере.",
+    "- Выполните указанные операции и сравните результаты в браузере и в Node.js:",
+    "",
+    {
+      "type": "code",
+      "title": "Создание объекта Date и вывод текущего времени",
+      "code": "const date = new Date(); console.log(date.toLocaleString());"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Генерация и обработка исключения с ошибкой",
+      "code": "try { throw new Error('Test error'); } catch(e) { console.log(e.stack); }"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Создание объекта ArrayBuffer и вывод его размера",
+      "code": "const ab = new ArrayBuffer(10); console.log(ab.byteLength);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Конвертирование объекта в строку JSON",
+      "code": "const obj = { name: 'John', age: 30 }; console.log(JSON.stringify(obj));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Генерация случайного числа",
+      "code": "console.log(Math.random());"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Регулярное выражение и проверка соответствия строки",
+      "code": "const regex = /^\\w+$/; console.log(regex.test('test'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Создание и перебор коллекции Map",
+      "code": "const map = new Map([[1, 'one'], [2, 'two']]); for(const [k,v] of map.entries()){ console.log(k, v); }"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Использование Proxy для перехвата обращений к свойствам объекта",
+      "code": "const proxy = new Proxy({}, { get(target, prop) { return target[prop] || 'default'; } }); console.log(proxy.name);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Создание и выполнение промиса с таймером",
+      "code": "new Promise(resolve => setTimeout(() => resolve('resolved'), 100)).then(result => console.log(result));"
+    },
+    "",
+    "Анализ результатов:",
+    "- Сравните результаты операций в браузере и в Node.js.",
+    "- Заметьте возможные различия в выводе и поведении классов в обеих средах.",
+    "",
+    "Заключение:",
+    "- Сделайте вывод о различиях в работе встроенных классов JavaScript в браузере и Node.js. Есть ли они?"
+  ],
+  "reflection_questions": [
+    "Какие классы существуют исключительно в среде Node.js и отсутствуют в браузере?",
+    "Имеются ли отличия в поведении одного и того же класса в браузере и Node.js?",
+    "Как вы думаете, почему возникает разница в результате выполнения одного и того же кода в разных окружениях?"
+  ],
+  "additional_materials": [
+    "Документация MDN по стандартным объектам JavaScript: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects",
+    "Справочник по глобальным объектам Node.js: https://nodejs.org/api/globals.html"
+  ],
+  "final_conclusion": [
+    "Вы получили практический опыт работы с встроенными классами JavaScript в двух разных платформах: браузере и Node.js."
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "title": "Исследование специализированных классов и функций JavaScript-платформ",
+  "goals": [
+    "Исследовать уникальные компоненты браузеров и Node.js, отсутствующие в стандарте JavaScript.",
+    "Понимать различия между средами исполнения (браузер vs Node.js).",
+    "Практическая работа с ключевыми платформозависимыми объектами и функциями."
+  ],
+  "training_topic": "Специализированные объекты и функции JavaScript-платформ, доступные только в браузере или Node.js.",
+  "required_resources": [
+    "Node.js версии 14+ (установлен в ОС).",
+    "Браузер (Google Chrome, Yandex Browser и аналогичные)."
+  ],
+  "instructions": [
+    "Введение в специализированные классы и функции JavaScript-платформ:",
+    "- Ознакомьтесь с документацией и выясните, какие объекты и функции используются только в конкретной платформе (браузер или Node.js).",
+    "",
+    "Экспериментирование с платформозависимыми компонентами:",
+    "- Выполняйте предложенные эксперименты в браузере и в Node.js отдельно, отмечая для себя результаты.",
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: window.location.href",
+      "code": "console.log(window.location.href);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: document.getElementById",
+      "code": "console.log(document.getElementById('some-id'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: navigator.userAgent",
+      "code": "console.log(navigator.userAgent);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: localStorage",
+      "code": "localStorage.setItem('key', 'value'); console.log(localStorage.getItem('key'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: sessionStorage",
+      "code": "sessionStorage.setItem('sessionKey', 'sessionValue'); console.log(sessionStorage.getItem('sessionKey'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: requestAnimationFrame",
+      "code": "requestAnimationFrame(timestamp => console.log(timestamp));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: XMLHttpRequest",
+      "code": "const xhr = new XMLHttpRequest(); xhr.open('GET', '/'); xhr.send();"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: fetch",
+      "code": "fetch('/').then(res => console.log(res.status));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: indexedDB",
+      "code": "window.indexedDB.open('dbName', 1);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: History API",
+      "code": "history.pushState(null, '', '/new-page');"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: FileReader",
+      "code": "const reader = new FileReader(); reader.onload = e => console.log(e.target.result);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для браузера: Geolocation API",
+      "code": "if ('geolocation' in navigator) navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords.latitude));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: __dirname",
+      "code": "console.log(__dirname);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: require",
+      "code": "const fs = require('fs'); console.log(fs.existsSync('.'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: process.argv",
+      "code": "console.log(process.argv);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: global",
+      "code": "global.myVar = 'Hello World'; console.log(global.myVar);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: exports и module.exports",
+      "code": "exports.myFunc = () => console.log('My Function');"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: child_process.spawn",
+      "code": "const { spawn } = require('child_process'); const ls = spawn('ls', ['-lh', '/usr']);"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: fs.writeFile",
+      "code": "require('fs').writeFile('file.txt', 'Some content.', err => console.log(err ? err : 'Success'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: os.platform",
+      "code": "const os = require('os'); console.log(os.platform());"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Специфична для Node.js: crypto.createHash",
+      "code": "const crypto = require('crypto'); const hash = crypto.createHash('sha256'); hash.update('Hello'); console.log(hash.digest('hex'));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Универсальна для браузера и Node.js: Set",
+      "code": "const s = new Set([1, 2, 3]); console.log(s.has(2));"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Универсальна для браузера и Node.js: WeakMap",
+      "code": "const wm = new WeakMap(); wm.set(this, 'Weak Value'); console.log(wm.get(this));"
+    },
+    "",
+    "Анализ результатов эксперимента:",
+    "- Проанализируйте, какие классы и функции поддерживаются только в браузере, только в Node.js или являются общими для обеих платформ.",
+    "- Зафиксируйте наблюдения о различиях в поведении платформозависимых компонентов.",
+    "",
+    "Заключение:",
+    "- Составьте резюме по проведенным экспериментам и зафиксированным результатам."
+  ],
+  "reflection_questions": [
+    "Какие из исследуемых компонентов встречаются только в браузере? Только в Node.js?",
+    "Какие общие черты и различия наблюдаются между этими двумя платформами?",
+    "Какие из общих компонентов имеют незначительные различия в поведении?"
+  ],
+  "additional_materials": [
+    "Документация MDN по платформе браузера: https://developer.mozilla.org/en-US/docs/Web/API",
+    "Документация Node.js: https://nodejs.org/api/"
+  ],
+  "final_conclusion": [
+    "Вы приобрели практические навыки работы с специализированными объектами и функциями, характерными для конкретных платформ (браузер и Node.js).",
+    "Проанализировали отличие поведения популярных конструкций JavaScript в разных средах.",
+    "Сравнили возможности стандартной библиотеки JavaScript и платформозависимые расширения."
+  ]
+}

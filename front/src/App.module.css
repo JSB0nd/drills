@@ -1,0 +1,9 @@
+.App {
+    width: 80%;
+    margin: auto;
+}
+
+.chapterdrill {
+    display: flex;
+    gap: 12px;
+}
