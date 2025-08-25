@@ -1,0 +1,101 @@
+{
+  "title": "Создание middleware для стора Redux",
+  "goals": [
+    "Практическое освоение создания middleware в Redux.",
+    "Закрепление навыков работы с промежуточными слоями (middleware) и сторами в Redux."
+  ],
+  "training_topic": "Промежуточные слои (middleware) в Redux, управление состоянием приложения.",
+  "required_resources": [
+    "Файлы: package.json, webpack.config.js, index.html, drill.js (предоставляются преподавателем)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Цель упражнения — научиться создавать и использовать middleware в Redux для мониторинга и логирования действий в приложении.",
+    "",
+    "Шаг 1. Подготовьте рабочую среду:",
+    "- Скачайте и распакуйте архив с файлами, предоставленными преподавателем.",
+    "",
+    "Шаг 2. Настройка окружения:",
+    "- Откройте терминал и перейдите в директорию с проектом.",
+    "- Установите зависимости, выполнив команду:",
+    {
+      "type": "code",
+      "title": "Установка зависимостей",
+      "code": "npm install"
+    },
+    "",
+    "Шаг 3. Создание middleware и интеграция с стором:",
+    "- Откройте файл `drill.js` и вставьте следующий пример кода, пошагово заполняя недостающие части под руководством преподавателя:",
+    {
+      "type": "code",
+      "title": "Импорт и объявление начальных данных",
+      "code": "import { createStore, applyMiddleware } from 'redux'; const TOGGLE_THEME = 'TOGGLE_THEME';"
+    },
+    "",
+    "- Добавьте в файл реализацию редюсера, отвечающего за смену темы приложения:",
+    {
+      "type": "code",
+      "title": "Редюсер смены темы",
+      "code": "const themeReducer = (state = 'light', action) => { if (action.type === TOGGLE_THEME) { return state === 'light' ? 'dark' : 'light'; } return state; };"
+    },
+    "",
+    "- Создайте экшн-креатор для смены темы:",
+    {
+      "type": "code",
+      "title": "Экшн-креатор для смены темы",
+      "code": "const toggleTheme = () => ({ type: TOGGLE_THEME });"
+    },
+    "",
+    "- Реализуйте middleware, регистрирующее переключение темы и осуществляющее логирование в консоль:",
+    {
+      "type": "code",
+      "title": "Создание middleware",
+      "code": "function loggerMiddleware(store) { return function(next) { return function(action) { console.log('Before:', store.getState()); const result = next(action); console.log('After:', store.getState()); return result; }; }; }"
+    },
+    "",
+    "- Интегрируйте middleware со стором Redux и создайте стор:",
+    {
+      "type": "code",
+      "title": "Интеграция middleware и создание стора",
+      "code": "const store = createStore(themeReducer, 'light', applyMiddleware(loggerMiddleware));"
+    },
+    "",
+    "- Реализуйте логику UI-компонентов для переключения темы:",
+    {
+      "type": "code",
+      "title": "Логика UI-компонентов",
+      "code": "const button = document.getElementById('theme-toggle'); const output = document.getElementById('theme'); button.addEventListener('click', () => { store.dispatch(toggleTheme()); output.innerHTML = store.getState(); });"
+    },
+    "",
+    "Шаг 4. Сборка и запуск приложения:",
+    "- Запустите сборку проекта с помощью команды:",
+    {
+      "type": "code",
+      "title": "Сборка проекта",
+      "code": "npm run build"
+    },
+    "",
+    "- Откройте файл `index.html` в браузере и изучите вывод в консоли.",
+    "",
+    "Заключение:",
+    "- Вы создали middleware для стора Redux, научились отслеживать и регистрировать изменения состояния приложения."
+  ],
+  "reflection_questions": [
+    "Какие задачи решаются с помощью middleware в Redux?",
+    "Как организован процесс регистрации и выполнения middleware в Redux?",
+    "Какие преимущества даёт использование middleware перед обычной обработкой экшенов в редюсерах?"
+  ],
+  "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "1",
+    "chapter": "4.5"
+    },    
+    "Документация Redux: https://redux.js.org/introduction/getting-started"
+  ],
+  "final_conclusion": [
+    "Вы освоили создание и интеграцию middleware в Redux, пополнив свои знания и навыки в области управления состоянием приложений."
+  ]
+}

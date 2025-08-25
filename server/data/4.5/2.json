@@ -1,0 +1,102 @@
+
+{
+  "title": "Создание энхансера для стора Redux",
+  "goals": [
+    "Практическое освоение создания энхансеров в Redux.",
+    "Закрепление навыков работы с продвинутыми аспектами библиотеки Redux."
+  ],
+  "training_topic": "Энхансеры в Redux, управление состоянием приложения и расширенная логика.",
+  "required_resources": [
+    "Файлы: package.json, webpack.config.js, index.html, drill.js (предоставляются преподавателем)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Цель упражнения — научиться создавать и использовать энхансеры в Redux для расширения функциональности стора.",
+    "",
+    "Шаг 1. Подготовьте рабочую среду:",
+    "- Скачайте и распакуйте архив с файлами, предоставленными преподавателем.",
+    "",
+    "Шаг 2. Настройка окружения:",
+    "- Откройте терминал и перейдите в директорию с проектом.",
+    "- Установите зависимости, выполнив команду:",
+    {
+      "type": "code",
+      "title": "Установка зависимостей",
+      "code": "npm install"
+    },
+    "",
+    "Шаг 3. Создание энхансера и интеграция с стором:",
+    "- Откройте файл `drill.js` и вставьте следующий пример кода, пошагово заполняя недостающие части под руководством преподавателя:",
+    {
+      "type": "code",
+      "title": "Импорт и объявление начальных данных",
+      "code": "import { createStore, compose, applyMiddleware, combineReducers } from 'redux'; const CHANGE_THEME = 'CHANGE_THEME';"
+    },
+    "",
+    "- Добавьте в файл реализацию редюсера, отвечающего за смену темы приложения:",
+    {
+      "type": "code",
+      "title": "Редюсер смены темы",
+      "code": "const themeReducer = (state = 'light', action) => { if (action.type === CHANGE_THEME) { return state === 'light' ? 'dark' : 'light'; } return state; };"
+    },
+    "",
+    "- Создайте экшн-креатор для смены темы:",
+    {
+      "type": "code",
+      "title": "Экшн-креатор для смены темы",
+      "code": "const changeTheme = () => ({ type: CHANGE_THEME });"
+    },
+    "",
+    "- Реализуйте энхансер, отслеживающий изменения темы и уведомляющий слушателей с выводом сообщений в консоль:",
+    {
+      "type": "code",
+      "title": "Создание энхансера",
+      "code": "const themeTrackerEnhancer = (createStore) => (reducer, initialState) => { const store = createStore(reducer, initialState); let currentTheme = initialState; const subscribers = []; const enhancedDispatch = (action) => { store.dispatch(action); if (action.type === CHANGE_THEME) { console.log('Publisher: Theme changed from', currentTheme, 'to', store.getState()); subscribers.forEach(subscriber => subscriber(currentTheme, store.getState())); currentTheme = store.getState(); } }; return { ...store, dispatch: enhancedDispatch, subscribe: (subscriber) => { subscribers.push(subscriber); return () => { const index = subscribers.indexOf(subscriber); subscribers.splice(index, 1); }; } }; };"
+    },
+    "",
+    "- Интегрируйте энхансер с магазином Redux и создайте стор:",
+    {
+      "type": "code",
+      "title": "Интеграция энхансера и создание стора",
+      "code": "const store = createStore(themeReducer, 'light', themeTrackerEnhancer);"
+    },
+    "",
+    "- Реализуйте логику UI-компонентов для переключения темы и добавьте логику слушателя (Subscriber):",
+    {
+      "type": "code",
+      "title": "Логика UI-компонентов и Subscriber",
+      "code": "const button = document.getElementById('theme-toggle'); button.addEventListener('click', () => { store.dispatch(changeTheme()); }); store.subscribe((prevTheme, currTheme) => { console.log('Subscriber: Theme updated from', prevTheme, 'to', currTheme); });"
+    },
+    "",
+    "Шаг 4. Сборка и запуск приложения:",
+    "- Запустите сборку проекта с помощью команды:",
+    {
+      "type": "code",
+      "title": "Сборка проекта",
+      "code": "npm run build"
+    },
+    "",
+    "- Откройте файл `index.html` в браузере и изучите вывод в консоли.",
+    "",
+    "Заключение:",
+    "- Вы создали энхансер для стора Redux, научились расширять функциональность магазина и отслеживать изменения состояния с выводом сообщений в консоль."
+  ],
+  "reflection_questions": [
+    "Какие задачи решают энхансеры в Redux?",
+    "Как организован процесс интеграции энхансеров с магазином Redux?",
+    "Какие преимущества даёт использование энхансеров перед обычной работой с редюсерами и экшенами?"
+  ],
+  "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "2",
+    "chapter": "4.5"
+    },    
+    "Документация Redux: https://redux.js.org/introduction/getting-started"
+  ],
+  "final_conclusion": [
+    "Вы освоили создание и интеграцию энхансеров в Redux, пополнив свои знания и навыки в области управления состоянием приложений."
+  ]
+}

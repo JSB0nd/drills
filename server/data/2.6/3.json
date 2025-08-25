@@ -40,6 +40,13 @@
     "Какие ограничения имеются у работы с буфером обмена в современных браузерах?"
   ],
   "additional_materials": [
+    {
+    "type": "link",
+    "title": "HTML-файл для выполнения упражнения",
+    "name": "1",
+    "folder": "3",
+    "chapter": "2.6"
+    }, 
     "Документация MDN по clipboard API: https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API"
   ],
   "final_conclusion": [
