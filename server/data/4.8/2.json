@@ -1,0 +1,94 @@
+{
+  "title": "Упражнение на создание слайса с помощью createSlice (игра «Угадай число»)",
+  "goals": [
+    "Практическое освоение функции createSlice из библиотеки @reduxjs/toolkit.",
+    "Закрепление навыков работы с редюсерами, экшенами и магазином в Redux."
+  ],
+  "training_topic": "Создание и управление состоянием приложения с помощью функции createSlice.",
+  "required_resources": [
+    "Файлы: package.json, webpack.config.js, index.html, drill.js (предоставляются преподавателем)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Цель упражнения — научиться создавать слайсы и управлять состоянием приложения с помощью функции createSlice из библиотеки @reduxjs/toolkit.",
+    "",
+    "Шаг 1. Подготовьте рабочую среду:",
+    "- Скачайте и распакуйте архив с файлами, предоставленными преподавателем.",
+    "",
+    "Шаг 2. Настройка окружения:",
+    "- Откройте терминал и перейдите в директорию с проектом.",
+    "- Установите зависимости, выполнив команду:",
+    {
+      "type": "code",
+      "title": "Установка зависимостей",
+      "code": "npm install"
+    },
+    "",
+    "Шаг 3. Создание слайса и интеграция с стором:",
+    "- Откройте файл `drill.js` и вставьте следующий пример кода, пошагово заполняя недостающие части под руководством преподавателя:",
+    {
+      "type": "code",
+      "title": "Импорт и объявление начальных данных",
+      "code": "import { configureStore, createSlice } from '@reduxjs/toolkit';"
+    },
+    "",
+    "- Добавьте в файл реализацию слайса для игрового состояния:",
+    {
+      "type": "code",
+      "title": "Создание слайса для игры",
+      "code": "const gameSlice = createSlice({ name: 'game', initialState: { number: Math.floor(Math.random() * 10) + 1, isVisible: false }, reducers: { revealNumber: (state) => { state.isVisible = true; }, hideAndGenerateNewNumber: (state) => { state.number = Math.floor(Math.random() * 10) + 1; state.isVisible = false; } } });"
+    },
+    "",
+    "- Экспорт экшенов и редюсера слайса:",
+    {
+      "type": "code",
+      "title": "Экспорт экшенов и редюсера",
+      "code": "const { revealNumber, hideAndGenerateNewNumber } = gameSlice.actions; const gameReducer = gameSlice.reducer;"
+    },
+    "",
+    "- Создайте магазин и интегрируйте редюсер слайса:",
+    {
+      "type": "code",
+      "title": "Создание магазина и интеграция редюсера",
+      "code": "const store = configureStore({ reducer: { game: gameReducer } });"
+    },
+    "",
+    "- Реализуйте логику отображения скрытого числа и генерации нового числа:",
+    {
+      "type": "code",
+      "title": "Логика отображения и генерации числа",
+      "code": "const figure = document.getElementById('figure'); const button = document.getElementById('button');"
+    },
+    "",
+    "- Реализуйте обработчик события для кнопки, который управляет видимостью и генерацией чисел:",
+    {
+      "type": "code",
+      "title": "Обработчик события для кнопки",
+      "code": "button.addEventListener('click', () => { if (store.getState().game.isVisible) { store.dispatch(hideAndGenerateNewNumber()); figure.textContent = ''; } else { store.dispatch(revealNumber()); figure.textContent = store.getState().game.number; } });"
+    },
+    "",
+    "Шаг 4. Сборка и запуск приложения:",
+    "- Запустите сборку проекта с помощью команды:",
+    {
+      "type": "code",
+      "title": "Сборка проекта",
+      "code": "npm run build"
+    },
+    "",
+    "- Откройте файл `index.html` в браузере и протестируйте игру.",
+    "",
+    "Заключение:",
+    "- Вы создали слайс и интегрировали его с магазином Redux, освоив работу с функцией createSlice из библиотеки @reduxjs/toolkit."
+  ],
+  "reflection_questions": [
+    "Какие задачи решает функция createSlice в Redux?",
+    "Как организована работа с экшенами и редюсерами при использовании createSlice?",
+    "Какие преимущества даёт использование createSlice перед ручной настройкой редюсеров и экшенов?"
+  ],
+  "additional_materials": [
+    "Документация @reduxjs/toolkit: https://redux-toolkit.js.org/api/createSlice"
+  ],
+  "final_conclusion": [
+    "Вы освоили создание слайсов с помощью функции createSlice из библиотеки @reduxjs/toolkit, пополнив свои знания и навыки в области управления состоянием приложений."
+  ]
+}
