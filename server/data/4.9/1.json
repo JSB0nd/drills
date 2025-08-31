@@ -100,6 +100,13 @@
     "Какие преимущества даёт использование createSlice и createApi перед традиционной настройкой Redux?"
   ],
   "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "1",
+    "chapter": "4.9"
+    },    
     "Документация @reduxjs/toolkit: https://redux-toolkit.js.org/api/createSlice",
     "Документация RTK Query: https://redux-toolkit.js.org/rtk-query/overview"
   ],

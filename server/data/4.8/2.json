@@ -86,6 +86,13 @@
     "Какие преимущества даёт использование createSlice перед ручной настройкой редюсеров и экшенов?"
   ],
   "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "2",
+    "chapter": "4.8"
+    },
     "Документация @reduxjs/toolkit: https://redux-toolkit.js.org/api/createSlice"
   ],
   "final_conclusion": [

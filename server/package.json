@@ -10,8 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "express": "^5.1.0",
-    "gigachat": "^0.0.16",
-    "multer": "^2.0.2"
+    "react-redux": "^9.2.0"
   }
 }

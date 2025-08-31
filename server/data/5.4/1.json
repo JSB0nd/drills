@@ -1,0 +1,90 @@
+{
+  "title": "Создание композиции компонентов в React (без хуков и эффектов)",
+  "goals": [
+    "Практическое освоение основ композиции компонентов в React.",
+    "Закрепление навыков многократного использования компонентов."
+  ],
+  "training_topic": "Композиция компонентов, многократное использование компонентов в React.",
+  "required_resources": [
+    "Редактор кода (VS Code, Sublime Text и т.д.).",
+    "React-проект (готовое приложение или созданный вручную)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Цель упражнения — научиться создавать и компоновать React-компоненты, многократно используя их в JSX.",
+    "",
+    "Шаг 1. Подготовьте рабочую среду:",
+    "- Откройте редактор кода и создайте или откройте существующую папку с React-проектом.",
+    {
+      "type": "code",
+      "title": "Установка npm-пакетов",
+      "code": "cd 1"
+    },
+    {
+      "type": "code",
+      "title": "",
+      "code": "npm install"
+    },
+    {
+      "type": "code",
+      "title": "",
+      "code": "npm start"
+    },    
+    "",
+    "Шаг 2. Создание родительского компонента:",
+    "- Создайте файл `App.js` и поместите в него следующий код родительского компонента:",
+    {
+      "type": "code",
+      "title": "Родительский компонент App",
+      "code": "import React from 'react'; import FirstMessage from './FirstMessage'; import SecondMessage from './SecondMessage'; import ThirdMessage from './ThirdMessage'; const App = () => (<><h1>Композиция компонентов в React</h1><FirstMessage /><SecondMessage /><ThirdMessage /></>); export default App;"
+    },
+    "",
+    "Шаг 3. Создание дочерних компонентов:",
+    "- Создайте три файла: `FirstMessage.js`, `SecondMessage.js`, `ThirdMessage.js` и поместите в них следующий код:",
+    {
+      "type": "code",
+      "title": "Дочерний компонент FirstMessage",
+      "code": "import React from 'react'; const FirstMessage = () => (<div style={{ marginBottom: '1rem' }}><p>Привет!</p></div>); export default FirstMessage;"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Дочерний компонент SecondMessage",
+      "code": "import React from 'react'; const SecondMessage = () => (<div style={{ marginBottom: '1rem' }}><p>Мир!</p></div>); export default SecondMessage;"
+    },
+    "",
+    {
+      "type": "code",
+      "title": "Дочерний компонент ThirdMessage",
+      "code": "import React from 'react'; const ThirdMessage = () => (<div style={{ marginBottom: '1rem' }}><p>React!</p></div>); export default ThirdMessage;"
+    },
+    "",
+    "Шаг 4. Композиция компонентов:",
+    "- В файле `App.js` компонуйте дочерние компоненты `FirstMessage`, `SecondMessage`, `ThirdMessage` в нужном порядке.",
+    "",
+    "Шаг 5. Запуск и просмотр результата:",
+    "- Запустите проект с помощью команды `npm start` или аналогичной.",
+    "- Откройте браузер и убедитесь, что все компоненты отобразились корректно.",
+    "",
+    "Заключение:",
+    "- Вы создали и композировали React-компоненты, освоив многократное использование компонентов в JSX."
+  ],
+  "reflection_questions": [
+    "Какие задачи решает композиция компонентов в React?",
+    "Как организовано взаимодействие между родительским и дочерним компонентами?",
+    "Какие преимущества даёт возможность многократного использования компонентов в React?"
+  ],
+  "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "1",
+    "chapter": "5.4"
+    },     
+    "Документация React: https://react.dev/learn"
+  ],
+  "final_conclusion": [
+    "Вы освоили основы композиции компонентов в React, научились многократно использовать компоненты, заложив фундамент для дальнейшего изучения React."
+  ]
+}
