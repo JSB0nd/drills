@@ -1,7 +1,7 @@
+const path = require('path');
 const express = require('express');
 const fs = require('fs');
 const fs_promises = fs.promises;
-const path = require('path');
 const readJsonFiles = require('./read');
 const getPosts = require('./posts');
 
@@ -33,25 +33,36 @@ app.get('/api/v1/json', (req, res) => {
   });
 });
 
-app.get('/api/v1/svg', (req, res) => {
+app.get('/api/v1/images/:format', (req, res) => {
 
   const { filename, folder, chapter } = req.query;
+  const { format } = req.params;
 
-  const imagePath = path.join(`${__dirname}/data/${chapter}/${folder}`, filename);
+  const mimeTypes = {
+    svg: 'image/svg+xml',
+    png: 'image/png',
+    jpg: 'image/jpeg',
+    gif: 'image/gif',
+    webp: 'image/webp',
+    ico: 'image/x-icon',
+    json: 'application/json',
+    txt: 'text/plain',
+  }
+  const imagePath = path.join(__dirname, `/data/${chapter}/${folder}`, filename);
 
   if (!filename || !folder) {
     return res.status(400).send("Параметры 'filename', 'chapter' и 'folder' обязательны.");
   }
 
-  if (!filename.endsWith('.svg')) {
-    return res.status(400).send('Только файлы .svg поддерживаются.');
+  if (!filename.endsWith(`.${format}`)) {
+    return res.status(400).send(`Странный формат файла ${format}`);
   }
 
   fs.readFile(imagePath, (err, data) => {
     if (err) {
       return res.status(404).send('Файл не найден.');
     }
-    res.type('image/svg+xml');
+    res.type(mimeTypes[format]);
     res.send(data);
   });
 });

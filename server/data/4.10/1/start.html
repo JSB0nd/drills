@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Разработка фронтенд-приложений</title>
+        <style>
+            body {
+                display: flex;
+
+                gap: 12px;
+            }
+            #book {
+                width: 100%;
+                height: 45px;
+                font-size: 18px;
+                color: #333;
+                border: 1px solid #333;
+                box-sizing: border-box;
+            }
+            #next-button {
+                background-color: white;
+                height: 45px;
+                border: 1px solid #333;
+                box-sizing: border-box;
+            }
+            #app-form {
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Книга "Разработка фронтенд-приложений", изд-во Питер https://piter.com; -->
+        <form id="app-form">
+            <input type="text" id="book" readonly />
+        </form><button id="next-button">Следующий</button>
+        <script src="./dist/bundle.js"></script>
+    </body>
+</html>

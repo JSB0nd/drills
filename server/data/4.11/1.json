@@ -1,0 +1,104 @@
+{
+  "title": "Разработка приложения с использованием Redux Toolkit",
+  "goals": [
+    "Практическое освоение разработки приложений с использованием Redux Toolkit.",
+    "Закрепление навыков работы с состоянием и инструментами Redux Toolkit."
+  ],
+  "training_topic": "Разработка приложений с применением Redux Toolkit, организация и управление состоянием.",
+  "required_resources": [
+    "Редактор кода (VS Code, Sublime Text и т.д.).",
+    "Файлы: package.json, webpack.config.js, start.html, basketSlice.js, drill.js (в разделе дополнительные материалы)."
+  ],
+  "instructions": [
+    "Введение в упражнение:",
+    "- Цель упражнения — научиться разрабатывать приложения с использованием Redux Toolkit, осваивая процессы выделения состояния, создания слайсов и интеграции со стором Redux.",
+    "",
+    "Шаг 1. Принятие решения о необходимости использования Redux Toolkit:",
+    "- Определите, нужно ли вашему приложению хранить изменяющиеся значения, зависящие от действий пользователя. Если да, переходите к следующему шагу.",
+    "",
+    "Шаг 2. Определение областей стора:",
+    "- Разделите состояние приложения на отдельные области, соответствующие разным порциям данных. Например, область для товаров в корзине, область для настроек пользователя и т.д.",
+    "",
+    "Шаг 3. Реализация состояния в коде приложения с помощью Redux Toolkit:",
+    "- Для каждой области состояния создайте отдельный слайс с помощью функции createSlice или API-интерфейс с помощью createApi.",
+    "",
+    "Пример создания слайса:",
+    {
+      "type": "code",
+      "title": "Создание слайса для корзины (файл basketSlice.js)",
+      "code": "import { createSlice } from '@reduxjs/toolkit'; const basketSlice = createSlice({ name: 'basket', initialState: [], reducers: { addToBasket: (state, action) => { state.push(action.payload); }, removeFromBasket: (state, action) => { state.splice(state.findIndex(item => item.id === action.payload), 1); } } });"
+    },
+    "",
+    "- Экспортируйте экшен-криэйторы, редьюсеры и селекторы, созданные в слайсе (файл basketSlice.js):",
+    {
+      "type": "code",
+      "title": "Экспорт экшен-криэйторов и редьюсеров",
+      "code": "export const { addToBasket, removeFromBasket } = basketSlice.actions; export default basketSlice.reducer;"
+    },
+    "",
+    "- Передайте редьюсеры в функцию configureStore для объединения в стор Redux:",
+    {
+      "type": "code",
+      "title": "Настройка стора (файл drill.js)",
+      "code": "import { configureStore } from '@reduxjs/toolkit'; import basketReducer, { addToBasket, removeFromBasket } from './basketSlice'; const store = configureStore({ reducer: { basket: basketReducer } });"
+    },
+    "",
+    "- Извлеките из стора функции subscribe, getState и dispatch, которые будут использоваться в коде приложения (файл drill.js):",
+    {
+      "type": "code",
+      "title": "Извлечение функций из стора",
+      "code": "const { subscribe, getState, dispatch } = store;"
+    },
+    "",
+    "- Подпишитесь на изменения состояния, передавая колбэки функции subscribe, комбинируя их с getState и селекторами (файл drill.js):",
+    {
+      "type": "code",
+      "title": "Подписка на изменения состояния",
+      "code": "document.getElementById('subscribe').addEventListener('click', () => { subscribe(() => console.log(getState())); });"
+    },
+    "",
+    "- Создайте колбэк для прекращения подписки на изменения, вызванный функцией subscribe (файл drill.js):",
+    {
+      "type": "code",
+      "title": "Колбэк для отмены подписки",
+      "code": "const unsubscribe = subscribe(() => console.log(getState())); document.getElementById('unsubscribe').addEventListener('click', () => { unsubscribe(); });"
+    },
+    "",
+    "- Объедините экшен-криэйторы с функцией dispatch и обработчиками событий, реагирующими на действия пользователя или другие события (файл drill.js):",
+    {
+      "type": "code",
+      "title": "Связь экшен-креаторов с обработчиками событий",
+      "code": "document.getElementById('add-item').addEventListener('click', () => { dispatch(addToBasket({ id: 1, name: 'Продукт 1' })); });"
+    },
+    "",
+    "Шаг 4. Проверка и запуск приложения:",
+    "- Запустите сборку проекта с помощью команды:",
+    {
+      "type": "code",
+      "title": "Сборка проекта",
+      "code": "npm run build"
+    },
+    "",
+    "- Откройте файл `start.html` в браузере и протестируйте работоспособность приложения.",
+    "",
+    "Заключение:",
+    "- Вы разработали приложение с использованием Redux Toolkit, освоив процесс выделения состояния, создания слайсов и интеграции со стором Redux."
+  ],
+  "reflection_questions": [
+    "Какие области состояния нужно выделить в вашем приложении?",
+    "Как организована работа с экшенами и редюсерами в Redux Toolkit?"
+  ],
+  "additional_materials": [
+    {
+    "type": "link",
+    "title": "Файлы для выполнения упражнения",
+    "name": "1",
+    "folder": "1",
+    "chapter": "4.11"
+    },
+    "Документация Redux Toolkit: https://redux-toolkit.js.org/"
+  ],
+  "final_conclusion": [
+    "Вы освоили процесс разработки приложений с использованием Redux Toolkit, закрепив навыки выделения состояния, создания слайсов и интеграции с магазином Redux."
+  ]
+}
